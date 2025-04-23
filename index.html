@@ -1,0 +1,1473 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sooka’s كافيه وألعاب بلايستيشن - أفضل مكان للاستمتاع بالمشروبات والألعاب في الإسكندرية">
+    <title>Sooka’s كافيه</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #000000;
+            --secondary-color: #FFD700;
+            --text-color: #FFFFFF;
+            --bg-color: #121212;
+            --accent-color: #FFA500;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+        
+        /* Welcome Page */
+        .welcome-page {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--primary-color);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            transition: opacity 1s ease;
+        }
+        
+        .welcome-content {
+            text-align: center;
+            padding: 2rem;
+            max-width: 800px;
+        }
+        
+        .welcome-logo {
+            color: var(--secondary-color);
+            font-size: 4rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+            animation: glow 2s infinite alternate;
+        }
+        
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+            }
+            to {
+                text-shadow: 0 0 20px rgba(255, 215, 0, 0.8), 0 0 30px rgba(255, 215, 0, 0.6);
+            }
+        }
+        
+        .welcome-tagline {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: var(--secondary-color);
+        }
+        
+        .enter-btn {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .enter-btn:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        }
+        
+        /* Main Website */
+        .main-website {
+            display: none;
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+        
+        header {
+            background-color: var(--primary-color);
+            padding: 1.5rem;
+            text-align: center;
+            border-bottom: 5px solid var(--secondary-color);
+            position: relative;
+            z-index: 100;
+        }
+        
+        .logo {
+            color: var(--secondary-color);
+            font-size: 3rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+        }
+        
+        .tagline {
+            color: var(--text-color);
+            font-size: 1.2rem;
+            margin-top: 0.5rem;
+        }
+        
+        .opening-hours {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            padding: 0.5rem;
+            font-weight: bold;
+            margin-top: 0.5rem;
+            border-radius: 5px;
+            display: inline-block;
+        }
+        
+        nav {
+            background-color: var(--primary-color);
+            padding: 1rem;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 90;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+        
+        nav ul li {
+            margin: 0 1rem;
+        }
+        
+        nav ul li a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: bold;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+        
+        nav ul li a i {
+            margin-left: 0.5rem;
+        }
+        
+        nav ul li a:hover {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+        
+        section {
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background-color: var(--primary-color);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            border: 2px solid var(--secondary-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+        }
+        
+        h2 {
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--secondary-color);
+            text-align: center;
+            font-size: 2rem;
+            position: relative;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+        
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .menu-category {
+            background-color: #1a1a1a;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--secondary-color);
+            transition: all 0.3s ease;
+        }
+        
+        .menu-category:hover {
+            border-color: var(--accent-color);
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.2);
+        }
+        
+        .menu-category h3 {
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            text-align: center;
+            border-bottom: 1px dashed var(--secondary-color);
+            padding-bottom: 0.5rem;
+        }
+        
+        .menu-item {
+            margin-bottom: 0.8rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px dashed #333;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .item-name {
+            font-weight: bold;
+        }
+        
+        .playstation-section {
+            margin-top: 3rem;
+        }
+        
+        .playstation-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .playstation-details {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .playstation-details ul {
+            list-style-type: none;
+            margin-top: 1rem;
+        }
+        
+        .playstation-details ul li {
+            margin-bottom: 0.8rem;
+            position: relative;
+            padding-right: 1.5rem;
+        }
+        
+        .playstation-details ul li::before {
+            content: '•';
+            color: var(--secondary-color);
+            font-size: 1.5rem;
+            position: absolute;
+            right: 0;
+            top: -5px;
+        }
+        
+        .video-container {
+            flex: 1;
+            min-width: 300px;
+            background-color: #1a1a1a;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 2px solid var(--secondary-color);
+        }
+        
+        video {
+            width: 100%;
+            display: block;
+        }
+        
+        .game-container {
+            margin-top: 3rem;
+            text-align: center;
+            padding: 2rem;
+            background-color: #1a1a1a;
+            border-radius: 10px;
+            border: 2px solid var(--secondary-color);
+        }
+        
+        .game-title {
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+        }
+        
+        .game-board {
+            display: inline-block;
+            background-color: var(--primary-color);
+            padding: 1rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .game-row {
+            display: flex;
+        }
+        
+        .game-cell {
+            width: 60px;
+            height: 60px;
+            border: 2px solid var(--secondary-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--secondary-color);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .game-cell:hover {
+            background-color: rgba(255, 215, 0, 0.1);
+        }
+        
+        .game-message {
+            margin-top: 1rem;
+            font-size: 1.2rem;
+            color: var(--accent-color);
+            min-height: 2rem;
+        }
+        
+        .reset-btn {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            border: none;
+            padding: 0.5rem 1.5rem;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+        
+        .reset-btn:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-2px);
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .contact-card {
+            background-color: #1a1a1a;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--secondary-color);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .contact-icon {
+            font-size: 2rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .contact-card h3 {
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+        
+        .whatsapp-btn, .facebook-btn {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .whatsapp-btn {
+            background-color: #25D366;
+        }
+        
+        .whatsapp-btn:hover {
+            background-color: #128C7E;
+            transform: translateY(-2px);
+        }
+        
+        .facebook-btn {
+            background-color: #1877F2;
+        }
+        
+        .facebook-btn:hover {
+            background-color: #0A58CA;
+            transform: translateY(-2px);
+        }
+        
+        footer {
+            background-color: var(--primary-color);
+            color: var(--text-color);
+            text-align: center;
+            padding: 2rem;
+            border-top: 5px solid var(--secondary-color);
+            margin-top: 3rem;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            text-align: right;
+        }
+        
+        .footer-section h3 {
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        .footer-section p {
+            margin-bottom: 0.5rem;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-links a {
+            color: var(--secondary-color);
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #333;
+            font-size: 0.9rem;
+            color: #777;
+        }
+        
+        .floating-btn {
+            position: fixed;
+            bottom: 2rem;
+            left: 2rem;
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            z-index: 99;
+            transition: all 0.3s ease;
+        }
+        
+        .floating-btn:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-5px) scale(1.1);
+        }
+        
+        /* Loading Animation */
+        .loader {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .loader-content {
+            text-align: center;
+            color: var(--secondary-color);
+        }
+        
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid var(--secondary-color);
+            border-radius: 50%;
+            border-top-color: transparent;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Gallery Section */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            height: 200px;
+            cursor: pointer;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 0.5rem;
+            text-align: center;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+        
+        @media (max-width: 768px) {
+            .welcome-logo {
+                font-size: 2.5rem;
+            }
+            
+            .welcome-tagline {
+                font-size: 1.2rem;
+            }
+            
+            nav ul {
+                flex-direction: column;
+            }
+            
+            nav ul li {
+                margin: 0.5rem 0;
+            }
+            
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .playstation-info {
+                flex-direction: column;
+            }
+            
+            .logo {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+        }
+        
+        /* Animation Classes */
+        .fade-in {
+            animation: fadeIn 1s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .slide-up {
+            animation: slideUp 0.8s ease-out;
+        }
+        
+        @keyframes slideUp {
+            from { 
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loader" id="loader">
+        <div class="loader-content">
+            <div class="spinner"></div>
+            <h3>جاري التحميل...</h3>
+        </div>
+    </div>
+    
+    <!-- Welcome Page -->
+    <div class="welcome-page" id="welcomePage">
+        <div class="welcome-content">
+            <div class="welcome-logo">Sooka’s</div>
+            <div class="welcome-tagline">كافيه وألعاب بلايستيشن - مفتوح 24 ساعة</div>
+            <button class="enter-btn" id="enterBtn">ادخل إلى الموقع <i class="fas fa-arrow-left"></i></button>
+        </div>
+    </div>
+    
+    <!-- Main Website -->
+    <div class="main-website" id="mainWebsite">
+        <header>
+            <div class="logo">Sooka’s</div>
+            <div class="tagline">كافيه وألعاب بلايستيشن</div>
+            <div class="opening-hours">مفتوح 24 ساعة طوال أيام الأسبوع</div>
+        </header>
+        
+        <nav>
+            <ul>
+                <li><a href="#home"><i class="fas fa-home"></i> الرئيسية</a></li>
+                <li><a href="#menu"><i class="fas fa-utensils"></i> قائمة الطعام</a></li>
+                <li><a href="#gallery"><i class="fas fa-images"></i> معرض الصور</a></li>
+                <li><a href="#playstation"><i class="fas fa-gamepad"></i> البلايستيشن</a></li>
+                <li><a href="#contact"><i class="fas fa-phone-alt"></i> اتصل بنا</a></li>
+            </ul>
+        </nav>
+        
+        <div class="container">
+            <section id="home" class="fade-in">
+                <h2>مرحباً بكم في Sooka’s</h2>
+                <p>وجهتك المفضلة للاستمتاع بأجواء لا تُنسى مع أفضل المشروبات وألذ المأكولات، بالإضافة إلى أحدث ألعاب البلايستيشن في غرف مكيفة مزودة بأفضل أنظمة الصوت.</p>
+                <p>نقدم لكم تجربة فريدة تجمع بين المتعة والراحة والطعم المميز، تحت إدارة أ/محمد فرج وأ/محمد جمال</p>
+                
+                <div class="playstation-section">
+                    <h3>ألعاب البلايستيشن</h3>
+                    <p>غرف مخصصة مزودة بأجهزة PS5 و PS4، مع مجموعة متنوعة من الألعاب تشمل جميع الأصناف والأذواق.</p>
+                </div>
+            </section>
+            
+            <section id="gallery" class="slide-up">
+                <h2>معرض الصور</h2>
+                <div class="gallery">
+                    <div class="gallery-item">
+                        <video controls width="100%" height="200" style="border-radius: 8px;">
+                            <source src="cafe.mp4" type="video/mp4">
+                            المتصفح لا يدعم تشغيل الفيديو.
+                          </video>
+                          
+                        <div class="gallery-caption">أجواء الكافيه</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="drinks.png" alt="المشروبات">
+                        <div class="gallery-caption">أشهى المشروبات</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="playstation.jpg" alt="غرف البلايستيشن">
+                        <div class="gallery-caption">غرف البلايستيشن</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="dessert.jpg" alt="الحلويات">
+                        <div class="gallery-caption">ألذ الحلويات</div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="menu" class="slide-up">
+                <h2>قائمة الطعام والمشروبات</h2>
+                
+                <div class="menu-grid">
+                    <!-- الحلويات -->
+                    <div class="menu-category">
+                        <h3>الحلويات</h3>
+                        <div class="menu-item">
+                            <span class="item-name">مولتن كيك</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">مولتن كيك ايس</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">أوريو مادنيس</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">براونيز</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">أيس كريم 3 بوله</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">أيس كريم</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">كنافة لوتس</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">كنافة نوتيلا</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">أم علي</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">إضافة أيس كريم</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">إضافة حليب</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">إضافة بندق</span>
+                        </div>
+                    </div>
+                    
+                    <!-- العصائر الفريش -->
+                    <div class="menu-category">
+                        <h3>عصائر فريش</h3>
+                        <div class="menu-item">
+                            <span class="item-name">كيوي</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">مانجا</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">جوافة</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">فراولة</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">موز</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">بطيخ</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">رمان</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">بلح</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">تين شوكي</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">ليمون</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">ليمون نعناع</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">زبادي</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">زبادي عسل</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">زبادي ميكس فاكهة</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">برتقال</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">مانجا بيري</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">إضافة حليب</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">إضافة صوص شوكليت</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">إضافة صوص نوتيلا</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">أناناس</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">تفاح</span>
+                        </div>
+                    </div>
+                    
+                    <!-- السموزي -->
+                    <div class="menu-category">
+                        <h3>سموزي</h3>
+                        <div class="menu-item">
+                            <span class="item-name">سموزي بلوبيري</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">سموزي ميكس بيري</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">سموزي مانجا</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">سموزي باشون فروت</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">سموزي فراولة</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">سموزي بطيخ</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">سموزي ليمون</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">سموزي ليمون نعناع</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">سموزي موز</span>
+                        </div>
+                    </div>
+                    
+                    <!-- ميلك تشيك -->
+                    <div class="menu-category">
+                        <h3>ميلك تشيك</h3>
+                        <div class="menu-item">
+                            <span class="item-name">ميلك تشيك فانيلا</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">ميلك تشيك شوكليت</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">ميلك تشيك فراولة</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">ميلك تشيك مانجا</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">ميلك تشيك أوريو</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">ميلك تشيك نوتيلا</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">ميلك تشيك لوتس</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">ميلك تشيك بلو راسبيري</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">ميلك تشيك باشون فروت</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">ميلك تشيك بلوبيري</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">ميلك تشيك هوهوز</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">ميلك تشيك كراميل</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">ميلك تشيك توينكز</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">ميلك تشيك موز</span>
+                        </div>
+                    </div>
+                    
+                    <!-- مشروبات باردة -->
+                    <div class="menu-category">
+                        <h3>مشروبات باردة</h3>
+                        <div class="menu-item">
+                            <span class="item-name">بيبسي</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">سفن أب</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">شويبس جولد</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">فيروز حبيتك في الصيف</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">ريدبول</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">مياه صغيرة</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">شيري كولا</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">صن شاين</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">موهيتو</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">مياه كبيرة</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">عناب</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">راني</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">هامر هيد</span>
+                        </div>
+                    </div>
+                    
+                    <!-- القهوة -->
+                    <div class="menu-category">
+                        <h3>القهوة</h3>
+                        <div class="menu-item">
+                            <span class="item-name">قهوة تركي</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">قهوة تركي دبل</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">قهوة فرنساوي</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">قهوة نوتيلا</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">قهوة لوتس</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">قهوة بندق</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">إسبريسو سنجل</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">إسبريسو دبل</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">كافيه لاتيه</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">قهوة محوج</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">أمريكان كوفي</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">نيسكافيه</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">كابتشينو</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">هوت شوكليت</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">موكا</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">آيس كوفي</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">فرابيه</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">آيس موكا</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">قهوة فرنساوي دبل</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">آيس شوكليت</span>
+                        </div>
+                    </div>
+                    
+                    <!-- كوكتيل -->
+                    <div class="menu-category">
+                        <h3>كوكتيل</h3>
+                        <div class="menu-item">
+                            <span class="item-name">أفريكانو</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">فلوريدا</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">إلكتريك ليمون</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">فراولة بطيخ</span>
+                        </div>
+                    </div>
+                    
+                    <!-- مشروبات ساخنة -->
+                    <div class="menu-category">
+                        <h3>مشروبات ساخنة</h3>
+                        <div class="menu-item">
+                            <span class="item-name">شاي ليبتون</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">شاي زرده</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">شاي براد</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">شاي أخضر</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">ينسون</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">نعناع</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">أعشاب</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">هوت سيدر</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">هوت ويلر</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">سحلب</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">شاي حليب</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">هوت شوكليت نوتيلا</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">شاي كشري</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">كركديه</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">فيتامين سي</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">ليمون سخن</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">هوت شوكليت</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">هوت أوريو</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">سحلب فواكه</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">براد ليبتون</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">كوفي ميكس</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">كوفي ميكس حليب</span>
+                        </div>
+                    </div>
+                    
+                    <!-- الشيشة -->
+                    <div class="menu-category">
+                        <h3>شيشة</h3>
+                        <div class="menu-item">
+                            <span class="item-name">حجر معسل</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">ورديان</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">فواكه</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">فاخر</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">ميكس فاخر</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">لي طبي</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="playstation" class="slide-up">
+                <h2>ألعاب البلايستيشن</h2>
+                <p>استمتع بتجربة ألعاب لا تُنسى في غرف مكيفة مزودة بأحدث أجهزة البلايستيشن 5 و 4، مع أنظمة صوت متطورة.</p>
+                
+                <div class="playstation-info">
+                    <div class="playstation-details">
+                        <h3>مميزات غرف البلايستيشن:</h3>
+                        <ul>
+                            <li>أجهزة PS5 و PS4 بأحدث الإصدارات</li>
+                            <li>غرف مكيفة ومجهزة بأفضل أنظمة الصوت</li>
+                            <li>مجموعة متنوعة من الألعاب تشمل جميع الأصناف</li>
+                            <li>إضاءة متغيرة حسب الجو</li>
+                            <li>مقاعد مريحة ومساحة كافية</li>
+                            <li>خدمة توصيل الطلبات إلى الغرف</li>
+                        </ul>
+                        
+                        <h3 style="margin-top: 2rem;">أنواع الغرف:</h3>
+                        <ul>
+                            <li>الغرفة الفردية (شخص واحد)</li>
+                            <li>الغرفة المزدوجة (شخصين)</li>
+                            <li>الغرفة الجماعية (حتى 4 أشخاص)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="video-container">
+                        <video controls poster="ps4-poster.jpg">
+                            <source src="ps4.mp4" type="video/mp4">
+                            متصفحك لا يدعم تشغيل الفيديو.
+                        </video>
+                    </div>
+                </div>
+                
+                <!-- لعبة XO بسيطة -->
+                <div class="game-container">
+                    <h3 class="game-title">لعبة XO بينا وبينك</h3>
+                    <div class="game-board" id="gameBoard">
+                        <div class="game-row">
+                            <div class="game-cell" data-index="0"></div>
+                            <div class="game-cell" data-index="1"></div>
+                            <div class="game-cell" data-index="2"></div>
+                        </div>
+                        <div class="game-row">
+                            <div class="game-cell" data-index="3"></div>
+                            <div class="game-cell" data-index="4"></div>
+                            <div class="game-cell" data-index="5"></div>
+                        </div>
+                        <div class="game-row">
+                            <div class="game-cell" data-index="6"></div>
+                            <div class="game-cell" data-index="7"></div>
+                            <div class="game-cell" data-index="8"></div>
+                        </div>
+                    </div>
+                    <div class="game-message" id="gameMessage"></div>
+                    <button class="reset-btn" id="resetBtn">إعادة اللعب</button>
+                </div>
+            </section>
+            
+            <section id="contact" class="slide-up">
+                <h2>اتصل بنا</h2>
+                <p>العنوان: الإسكندرية - العجمي - البيطاش - شارع مسجد الغفران</p>
+                <p>مواعيد العمل: مفتوح 24 ساعة طوال أيام الأسبوع</p>
+                
+                <div class="contact-grid">
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <h3>أ/محمد فرج</h3>
+                        <p>هاتف: 01207268982</p>
+                        <a href="tel:01207268982" class="whatsapp-btn">
+                            <i class="fas fa-phone"></i> اتصال هاتفي
+                        </a>
+                        <a href="https://wa.me/201207268982" class="whatsapp-btn" target="_blank" style="margin-top: 0.5rem;">
+                            <i class="fab fa-whatsapp"></i> واتساب
+                        </a>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <h3>أ/محمد جمال</h3>
+                        <p>هاتف: 01009000156</p>
+                        <a href="tel:01009000156" class="whatsapp-btn">
+                            <i class="fas fa-phone"></i> اتصال هاتفي
+                        </a>
+                        <a href="https://wa.me/201009000156" class="whatsapp-btn" target="_blank" style="margin-top: 0.5rem;">
+                            <i class="fab fa-whatsapp"></i> واتساب
+                        </a>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fab fa-facebook-f"></i>
+                        </div>
+                        <h3>فيسبوك</h3>
+                        <p>تابعنا على فيسبوك</p>
+                        <a href="https://www.facebook.com/profile.php?id=100079974075191" class="facebook-btn" target="_blank">
+                            <i class="fab fa-facebook-f"></i> زيارة الصفحة
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </div>
+        
+        <footer>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>عن Sooka’s</h3>
+                    <p>كافيه وألعاب بلايستيشن يوفر أجواء مميزة مع أفضل المشروبات والمأكولات وأحدث ألعاب البلايستيشن.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>مواعيد العمل</h3>
+                    <p>مفتوح 24 ساعة</p>
+                    <p>طوال أيام الأسبوع</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>تواصل معنا</h3>
+                    <p>العنوان: الإسكندرية - العجمي - البيطاش</p>
+                    <p>شارع مسجد الغفران</p>
+                    <p>أ/محمد فرج: 01207268982</p>
+                    <p>أ/محمد جمال: 01009000156</p>
+                    
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/profile.php?id=100079974075191" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://wa.me/201207268982" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://wa.me/201009000156" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                &copy; 2023 Sooka’s كافيه. جميع الحقوق محفوظة.
+            </div>
+        </footer>
+        
+        <div class="floating-btn" id="scrollToTop">
+            <i class="fas fa-arrow-up"></i>
+        </div>
+    </div>
+    
+    <script>
+        // Welcome Page
+        const enterBtn = document.getElementById('enterBtn');
+        const welcomePage = document.getElementById('welcomePage');
+        const mainWebsite = document.getElementById('mainWebsite');
+        
+        enterBtn.addEventListener('click', function() {
+            welcomePage.style.opacity = '0';
+            setTimeout(() => {
+                welcomePage.style.display = 'none';
+                mainWebsite.style.display = 'block';
+                setTimeout(() => {
+                    mainWebsite.style.opacity = '1';
+                }, 50);
+            }, 1000);
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Highlight current section in navigation
+        window.addEventListener('scroll', function() {
+            const scrollPosition = window.scrollY;
+            
+            document.querySelectorAll('section').forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                const sectionHeight = section.offsetHeight;
+                const sectionId = section.getAttribute('id');
+                
+                if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                    document.querySelectorAll('nav a').forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === `#${sectionId}`) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+            
+            // Show/hide scroll to top button
+            const scrollToTopBtn = document.getElementById('scrollToTop');
+            if (scrollPosition > 300) {
+                scrollToTopBtn.style.display = 'flex';
+            } else {
+                scrollToTopBtn.style.display = 'none';
+            }
+        });
+        
+        // Scroll to top button
+        document.getElementById('scrollToTop').addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // XO Game Logic
+        const cells = document.querySelectorAll('.game-cell');
+        const gameMessage = document.getElementById('gameMessage');
+        const resetBtn = document.getElementById('resetBtn');
+        
+        let currentPlayer = 'X';
+        let gameBoard = ['', '', '', '', '', '', '', '', ''];
+        let gameActive = true;
+        
+        const winningConditions = [
+            [0, 1, 2],
+            [3, 4, 5],
+            [6, 7, 8],
+            [0, 3, 6],
+            [1, 4, 7],
+            [2, 5, 8],
+            [0, 4, 8],
+            [2, 4, 6]
+        ];
+        
+        function handleCellClick(e) {
+            const cellIndex = e.target.getAttribute('data-index');
+            
+            if (gameBoard[cellIndex] !== '' || !gameActive) {
+                return;
+            }
+            
+            gameBoard[cellIndex] = currentPlayer;
+            e.target.textContent = currentPlayer;
+            
+            if (currentPlayer === 'X') {
+                e.target.style.color = '#FFD700'; // Gold for X
+            } else {
+                e.target.style.color = '#FFFFFF'; // White for O
+            }
+            
+            checkResult();
+        }
+        
+        function checkResult() {
+            let roundWon = false;
+            
+            for (let i = 0; i < winningConditions.length; i++) {
+                const [a, b, c] = winningConditions[i];
+                
+                if (gameBoard[a] === '' || gameBoard[b] === '' || gameBoard[c] === '') {
+                    continue;
+                }
+                
+                if (gameBoard[a] === gameBoard[b] && gameBoard[b] === gameBoard[c]) {
+                    roundWon = true;
+                    break;
+                }
+            }
+            
+            if (roundWon) {
+                gameMessage.textContent = `فاز اللاعب ${currentPlayer}!`;
+                gameActive = false;
+                return;
+            }
+            
+            if (!gameBoard.includes('')) {
+                gameMessage.textContent = 'تعادل!';
+                gameActive = false;
+                return;
+            }
+            
+            currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+            gameMessage.textContent = `دور اللاعب ${currentPlayer}`;
+        }
+        
+        function resetGame() {
+            currentPlayer = 'X';
+            gameBoard = ['', '', '', '', '', '', '', '', ''];
+            gameActive = true;
+            gameMessage.textContent = `دور اللاعب ${currentPlayer}`;
+            
+            cells.forEach(cell => {
+                cell.textContent = '';
+            });
+        }
+        
+        cells.forEach(cell => {
+            cell.addEventListener('click', handleCellClick);
+        });
+        
+        resetBtn.addEventListener('click', resetGame);
+        
+        // Initialize game
+        resetGame();
+        
+        // Add animations when scrolling
+        const animateOnScroll = function() {
+            const sections = document.querySelectorAll('section');
+            
+            sections.forEach(section => {
+                const sectionTop = section.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (sectionTop < windowHeight - 100) {
+                    section.classList.add('fade-in');
+                }
+            });
+        };
+        
+        window.addEventListener('scroll', animateOnScroll);
+        animateOnScroll(); // Run once on page load
+        
+        // Show loading screen
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                document.getElementById('loader').style.display = 'none';
+            }, 1500);
+        });
+    </script>
+</body>
+</html>
